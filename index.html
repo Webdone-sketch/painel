@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WebDone – Painel</title>
+<meta name="theme-color" content="#141412">
+<link rel="apple-touch-icon" id="ati" href="data:image/png;base64,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">
+<style>
+:root{--bg:#f4f2ec;--card:#fff;--ink:#1b1a17;--mut:#7c776a;--line:#e6e1d5;--acc:#e8a800;--ok:#2f8f4e;--bad:#c63c2e;--soft:#faf8f2}
+@media(prefers-color-scheme:dark){:root{--bg:#141412;--card:#1f1e1b;--ink:#f2efe6;--mut:#9d988b;--line:#33312c;--acc:#f2c033;--ok:#4cc27a;--bad:#ea6a5b;--soft:#191816}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.top .in{max-width:760px;margin:auto;display:flex;align-items:center;gap:12px}
+h1{margin:0;font-size:22px;letter-spacing:-.5px;flex:1}h1 span{color:var(--acc)}
+.pill{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--mut)}.pill.on i{background:var(--ok)}.pill.err i{background:var(--bad)}
+.kpis{max-width:760px;margin:10px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.kpi b{display:block;font-size:16px;white-space:nowrap}.kpi.lu b{color:var(--ok)}.kpi.lu.neg b{color:var(--bad)}.kpi span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+main{max-width:760px;margin:auto;padding:14px 12px 80px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}section{min-width:0}
+@media(min-width:720px){main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.wide{grid-column:1/-1}}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 12px 8px}
+h2{margin:2px 4px 8px;font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);display:flex;justify-content:space-between}
+h2 em{font-style:normal;color:var(--ink);text-transform:none;letter-spacing:0;font-weight:600}
+.row{display:flex;align-items:center;gap:4px;border-bottom:1px solid var(--line);min-height:46px}
+.row:last-child{border-bottom:0}
+input,select,textarea{font:inherit;color:inherit;background:transparent;border:0;border-radius:8px;padding:10px 6px;min-width:0}
+input[type=text]{flex:1}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);background:var(--soft)}
+input.num{width:84px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
+input.ord{width:38px;text-align:center;flex:none;color:var(--mut);font-size:14px}
+input.who{flex:.7;color:var(--mut)}
+select{flex:none;max-width:44%;color:var(--mut);font-size:14px;padding-right:2px}
+input[type=checkbox]{width:22px;height:22px;margin:0 6px;accent-color:var(--ok);flex:none}
+.row.done input[type=text]{text-decoration:line-through;color:var(--mut)}
+.eur{color:var(--mut);margin-right:2px}
+.del{flex:none;width:36px;height:36px;border:0;background:none;color:var(--mut);border-radius:8px;font-size:15px;cursor:pointer;opacity:.55}
+.del.arm{opacity:1;background:var(--bad);color:#fff;width:auto;padding:0 10px;font-size:13px}
+.add{width:100%;border:1px dashed var(--line);background:none;color:var(--mut);border-radius:10px;padding:11px;margin:8px 0 4px;font:inherit;font-size:14px;cursor:pointer}
+.add:active{background:var(--soft)}
+.total{display:flex;justify-content:space-between;font-weight:700;padding:10px 6px 4px;border-top:2px solid var(--ink);margin-top:4px}
+textarea{width:100%;min-height:140px;resize:vertical;border:1px solid var(--line);padding:10px;line-height:1.5}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:0 4px 6px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.empty{color:var(--mut);font-size:14px;padding:8px 6px}
+.ro .add,.ro .del{display:none}
+.msg{max-width:760px;margin:10px auto 0;padding:10px 12px;border-radius:10px;background:var(--soft);border:1px solid var(--line);font-size:14px;display:none}
+.msg.on{display:block}
+select[data-s=Feito],select[data-s=Postado],select[data-s=Vendido]{color:var(--ok)}.sub2{font-size:13px;color:var(--mut);padding:2px 6px 4px;text-align:right}#s-vendas input.num{width:64px}select[data-s='Não interessado']{color:var(--bad)}select[data-s='A construir'],select[data-s=Interessado]{color:var(--acc)}
+.out{border:0;background:none;color:var(--mut);font:inherit;font-size:12px;cursor:pointer;padding:4px 6px;border-radius:6px}
+#gate{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+#gate .box{max-width:360px;width:100%;text-align:center}
+#gate h1{font-size:34px;margin-bottom:6px}#gate p{color:var(--mut);margin:0 0 22px}
+.gbtn{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+#imp textarea{min-height:160px;font-size:12px;font-family:ui-monospace,monospace;margin-bottom:10px}
+#imp .gbtn{margin-bottom:8px}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div class="top"><div class="in"><h1>Web<span>Done</span></h1><div class="pill" id="st"><i></i><span>a ligar…</span></div><button class="out" id="out">Sair</button></div>
+<div class="kpis"><div class="kpi"><b id="kHoje">–</b><span>Hoje</span></div><div class="kpi"><b id="kGastos">–</b><span>Gastos</span></div><div class="kpi"><b id="kGanho">–</b><span>Ganho</span></div><div class="kpi lu" id="kLu"><b id="kLucro">–</b><span>Lucro</span></div></div>
+<div class="msg" id="msg"></div></div>
+<main id="app"></main>
+<div id="gate"><div class="box">
+ <h1>Web<span style="color:var(--acc)">Done</span></h1>
+ <div id="gLogin"><p>Painel da equipa</p><button class="gbtn" id="gBtn">Entrar com Google</button></div>
+ <div id="gMsg" style="margin-top:14px;color:var(--mut);font-size:14px"></div>
+ <div id="imp" class="hide"><p>Primeira vez: cola aqui os dados iniciais que o Claude te deu, ou começa vazio.</p>
+  <textarea id="impTxt" placeholder='{"hoje":{...}}'></textarea>
+  <button class="gbtn" id="impBtn">Importar dados</button><button class="gbtn" id="impSkip" style="background:none">Começar vazio</button></div>
+</div></div>
+<script>
+{const l=document.createElement("link");l.rel="icon";l.href=document.getElementById("ati").href;document.head.appendChild(l)}
+const SECS={
+  hoje:{title:'Hoje',fields:['done','n','t'],ph:'tarefa',sort:(a,b)=>(+a.n||0)-(+b.n||0)||(a.o||0)-(b.o||0)},
+  gastos:{title:'Gastos',fields:['t','v'],ph:'onde gastei'},
+  clientes:{title:'Clientes possíveis',fields:['t','estado'],ph:'nome do cliente',opts:['Por contactar','Interessado','Não interessado','A construir','Feito']},
+  vendas:{title:'Sites concluídos',fields:['t','v','estado'],ph:'site / cliente',opts:['Não vendido','Vendido']},
+  precos:{title:'Preços',fields:['t','v'],ph:'o quê'},
+  sites:{title:'Sites exemplares',fields:['t','estado'],ph:'nome do site',opts:['','Feito','Por postar','Postado']},
+  redes:{title:'Redes sociais',fields:['t','r'],ph:'rede'}
+};
+const $=id=>document.getElementById(id);
+let db=null,readOnly=false;
+const store={},rows={},timers={},chains={};
+function status(cls,t){const s=$('st');s.className='pill '+cls;s.lastElementChild.textContent=t}
+function msg(t){const m=$('msg');m.textContent=t||'';m.className='msg'+(t?' on':'')}
+function fail(e){
+  if(e&&(e.code==='invalid_argument'||e.code==='permission-denied')){readOnly=true;document.body.classList.add('ro');msg('Sem permissão. Confirma que entraste com a conta webdonee@gmail.com.');status('err','só leitura')}
+  else if(e&&e.code==='quota_exceeded'){msg('A base de dados está cheia.');status('err','cheia')}
+  else status('err','erro – tenta de novo');
+}
+function queue(key,fn){chains[key]=(chains[key]||Promise.resolve()).then(fn).then(()=>status('on','guardado')).catch(fail);return chains[key]}
+
+/* layout */
+const app=$('app');
+for(const k in SECS){
+  const s=document.createElement('section');s.id='s-'+k;
+  s.innerHTML=`<h2>${SECS[k].title}<em id="c-${k}"></em></h2>${k==='hoje'?'<div class="bar"><i id="bar"></i></div>':''}<div class="list" id="l-${k}"><div class="empty">A carregar…</div></div>${k==='gastos'?'<div class="total"><span>Total</span><span id="tot">0 €</span></div>':''}${k==='vendas'?'<div class="total"><span>Vendido</span><span id="totV">0 €</span></div><div class="sub2" id="totNV"></div>':''}<button class="add" data-k="${k}">+ adicionar</button>`;
+  app.appendChild(s);store[k]={};rows[k]={};
+}
+const ns=document.createElement('section');ns.className='wide';ns.innerHTML='<h2>Notas</h2><textarea id="notas" placeholder="Escreve aqui…"></textarea>';app.appendChild(ns);
+
+function makeRow(k,id){
+  const S=SECS[k],r=document.createElement('div');r.className='row';r.dataset.id=id;
+  for(const f of S.fields){
+    let el;
+    if(f==='done'){el=document.createElement('input');el.type='checkbox'}
+    else if(f==='estado'){el=document.createElement('select');S.opts.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o||'—';el.appendChild(op)})}
+    else{el=document.createElement('input');el.type='text';
+      if(f==='v'){el.className='num';el.inputMode='decimal';el.placeholder='0'}
+      else if(f==='n'){el.className='ord';el.inputMode='numeric'}
+      else if(f==='r'){el.className='who';el.placeholder='quem'}
+      else el.placeholder=S.ph;}
+    el.dataset.f=f;
+    el.addEventListener(f==='done'||f==='estado'?'change':'input',()=>edit(k,id,f,el));
+    r.appendChild(el);
+    if(f==='v'){const e=document.createElement('span');e.className='eur';e.textContent='€';r.appendChild(e)}
+  }
+  const d=document.createElement('button');d.className='del';d.textContent='✕';d.setAttribute('aria-label','apagar');
+  d.addEventListener('click',()=>{
+    if(!d.classList.contains('arm')){d.classList.add('arm');d.textContent='apagar?';setTimeout(()=>{d.classList.remove('arm');d.textContent='✕'},3000);return}
+    status('','a apagar…');queue(k+id,()=>db.collection(k).doc(id).delete());
+  });
+  r.appendChild(d);return r;
+}
+function val(f,el){if(f==='done')return el.checked;if(f==='v'){const x=parseFloat(String(el.value).replace(',','.'));return isNaN(x)?0:x}if(f==='n'){const x=parseInt(el.value,10);return isNaN(x)?0:x}return el.value}
+function edit(k,id,f,el){
+  if(readOnly)return;
+  const v=val(f,el);store[k][id]=Object.assign({},store[k][id],{[f]:v});
+  if(f==='done')el.closest('.row').classList.toggle('done',v);
+  if(f==='estado')el.dataset.s=v;
+  kpis();status('','a guardar…');
+  const key=k+id;timers[key]=timers[key]||{};timers[key].p=Object.assign(timers[key].p||{},{[f]:v});
+  clearTimeout(timers[key].t);
+  timers[key].t=setTimeout(()=>{const p=timers[key].p;timers[key].p=null;queue(key,()=>db.collection(k).doc(id).update(p))},f==='done'||f==='estado'?0:450);
+}
+function paint(k){
+  const S=SECS[k],list=$('l-'+k),ids=Object.keys(store[k]);
+  ids.sort((a,b)=>S.sort?S.sort(store[k][a],store[k][b]):(store[k][a].o||0)-(store[k][b].o||0));
+  for(const id in rows[k])if(!store[k][id]){rows[k][id].remove();delete rows[k][id]}
+  const em=list.querySelector('.empty');if(em)em.remove();
+  for(const id of ids){
+    const d=store[k][id];let r=rows[k][id];
+    if(!r){r=rows[k][id]=makeRow(k,id);list.appendChild(r)}
+    r.querySelectorAll('[data-f]').forEach(el=>{
+      if(el===document.activeElement||(timers[k+id]&&timers[k+id].p&&el.dataset.f in timers[k+id].p))return;
+      const f=el.dataset.f,v=d[f];
+      if(f==='done')el.checked=!!v;else el.value=(v===undefined||v===null||(f==='v'&&v===0&&!el.value))?(f==='estado'?(S.opts[0]):''):v;
+      if(f==='estado')el.dataset.s=el.value;
+    });
+    r.classList.toggle('done',!!d.done);
+  }
+  const cur=[...list.children].map(r=>r.dataset.id);
+  if(cur.join()!==ids.join()&&!list.contains(document.activeElement))ids.forEach(id=>list.appendChild(rows[k][id]));
+  if(!ids.length)list.innerHTML='<div class="empty">Nada ainda.</div>';
+  kpis();
+}
+function kpis(){
+  const h=Object.values(store.hoje),dn=h.filter(x=>x.done).length;
+  $('kHoje').textContent=h.length?dn+'/'+h.length:'–';$('bar').style.width=(h.length?dn/h.length*100:0)+'%';$('c-hoje').textContent=h.length?dn+' de '+h.length:'';
+  const t=Object.values(store.gastos).reduce((a,x)=>a+(+x.v||0),0),ts=(Math.round(t*100)/100).toLocaleString('pt-PT')+' €';
+  $('tot').textContent=ts;$('kGastos').textContent=ts;
+  const eur=x=>(Math.round(x*100)/100).toLocaleString('pt-PT')+' €';
+  const vs=Object.values(store.vendas),g=vs.filter(x=>x.estado==='Vendido').reduce((a,x)=>a+(+x.v||0),0),nv=vs.filter(x=>x.estado!=='Vendido');
+  $('kGanho').textContent=eur(g);$('totV').textContent=eur(g);$('kLucro').textContent=eur(g-t);$('kLu').classList.toggle('neg',g-t<0);
+  $('totNV').textContent=nv.length?nv.length+' por vender · '+eur(nv.reduce((a,x)=>a+(+x.v||0),0))+' em potencial':'';
+  $('c-vendas').textContent=vs.length?vs.filter(x=>x.estado==='Vendido').length+' de '+vs.length+' vendidos':'';
+  const c=Object.values(store.clientes);
+  $('c-clientes').textContent=c.length?c.filter(x=>x.estado==='Feito').length+' feitos':'';
+}
+app.addEventListener('click',e=>{
+  const b=e.target.closest('.add');if(!b||!db||readOnly)return;
+  const k=b.dataset.k,ref=db.collection(k).doc(),S=SECS[k];
+  const d={t:'',o:Date.now()};
+  if(S.fields.includes('v'))d.v=0;if(S.fields.includes('estado'))d.estado=S.opts[0];if(k==='hoje'){d.done=false;d.n=Object.keys(store.hoje).length}if(k==='redes')d.r='';
+  store[k][ref.id]=d;paint(k);
+  const inp=rows[k][ref.id].querySelector('input[type=text]:not(.ord)');if(inp)inp.focus();
+  status('','a guardar…');queue(k+ref.id,()=>ref.set(d));
+});
+document.addEventListener('focusout',()=>setTimeout(()=>{for(const k in SECS)paint(k)},60));
+
+window.startApp=function(adapter){
+  if(db)return;db=adapter;
+  let first=0;const need=Object.keys(SECS).length+1;
+  const to=setTimeout(()=>{if(first<need){status('err','sem resposta');msg('Não consegui ligar à base de dados. Verifica a internet.')}},10000);
+  const ok=()=>{if(++first>=need){clearTimeout(to);msg('')}status('on','ao vivo')};
+  for(const k in SECS){
+    db.collection(k).onSnapshot(s=>{
+      const m={};s.docs.forEach(d=>{m[d.id]=Object.assign({},d.data())});
+      for(const id in m){const p=timers[k+id]&&timers[k+id].p;if(p)Object.assign(m[id],p)}
+      store[k]=m;paint(k);ok();
+    },e=>fail(e));
+  }
+  const nd=db.doc('meta/notas'),ta=$('notas');let nt;
+  nd.onSnapshot(s=>{const v=(s.exists&&s.data().txt)||'';if(document.activeElement!==ta&&!nt)ta.value=v;ok()},e=>fail(e));
+  ta.addEventListener('input',()=>{if(readOnly)return;status('','a guardar…');clearTimeout(nt);nt=setTimeout(()=>{nt=null;queue('notas',()=>nd.set({txt:ta.value}))},600)});
+};
+</script>
+<script type="module">
+const V='10.12.2',B='https://www.gstatic.com/firebasejs/'+V+'/';
+const ALLOWED='webdonee@gmail.com';
+const firebaseConfig={
+  apiKey:"AIzaSyD1jCDmJe1X1cAgaMXAuFpMJ0sXvk6mPxE",
+  authDomain:"webdone-78d2e.firebaseapp.com",
+  projectId:"webdone-78d2e",
+  storageBucket:"webdone-78d2e.firebasestorage.app",
+  messagingSenderId:"260456884694",
+  appId:"1:260456884694:web:3404b54332dd706637dc77"
+};
+const $=id=>document.getElementById(id),gm=t=>{$('gMsg').textContent=t||''};
+let A,F,FS;
+try{
+  [A,F,FS]=await Promise.all([import(B+'firebase-app.js'),import(B+'firebase-auth.js'),import(B+'firebase-firestore.js')]);
+}catch(e){gm('Não consegui carregar. Verifica a internet e recarrega.');throw e}
+const app=A.initializeApp(firebaseConfig),auth=F.getAuth(app),fs=FS.getFirestore(app);
+const W=s=>({id:s.id,exists:s.exists(),data:()=>s.data(),metadata:s.metadata});
+const R=r=>({id:r.id,set:d=>FS.setDoc(r,d),update:d=>FS.updateDoc(r,d),delete:()=>FS.deleteDoc(r),onSnapshot:(n,e)=>FS.onSnapshot(r,s=>n(W(s)),e)});
+const adapter={
+  collection:k=>({doc:id=>R(id?FS.doc(fs,k,id):FS.doc(FS.collection(fs,k))),
+    onSnapshot:(n,e)=>FS.onSnapshot(FS.collection(fs,k),s=>n({docs:s.docs.map(W),metadata:s.metadata}),e)}),
+  doc:p=>R(FS.doc(fs,p))
+};
+const prov=new F.GoogleAuthProvider();prov.setCustomParameters({prompt:'select_account',login_hint:ALLOWED});
+$('gBtn').onclick=async()=>{gm('');try{await F.signInWithPopup(auth,prov)}catch(e){
+  if(e.code==='auth/popup-blocked'||e.code==='auth/operation-not-supported-in-this-environment')return F.signInWithRedirect(auth,prov);
+  if(e.code==='auth/unauthorized-domain')return gm('Este endereço ainda não está autorizado no Firebase (Authentication → Configurações → Domínios autorizados).');
+  if(e.code!=='auth/popup-closed-by-user'&&e.code!=='auth/cancelled-popup-request')gm('Erro ao entrar: '+e.code)}};
+$('out').onclick=()=>F.signOut(auth).then(()=>location.reload());
+F.getRedirectResult(auth).catch(e=>gm('Erro ao entrar: '+e.code));
+async function importar(obj){
+  const b=FS.writeBatch(fs);let n=0;
+  for(const k in obj){if(k==='meta')continue;for(const id in obj[k]){b.set(FS.doc(fs,k,id),obj[k][id]);n++}}
+  if(obj.meta&&obj.meta.notas)b.set(FS.doc(fs,'meta','notas'),obj.meta.notas);
+  b.set(FS.doc(fs,'meta','seed'),{at:Date.now(),n});await b.commit();
+}
+F.onAuthStateChanged(auth,async u=>{
+  if(!u){$('gate').classList.remove('hide');$('gLogin').classList.remove('hide');$('imp').classList.add('hide');return}
+  if((u.email||'').toLowerCase()!==ALLOWED){gm('A conta '+u.email+' não tem acesso. Entra com '+ALLOWED+'.');await F.signOut(auth);return}
+  $('gLogin').classList.add('hide');gm('A carregar…');
+  let seeded=true;
+  try{seeded=(await FS.getDoc(FS.doc(fs,'meta','seed'))).exists()}
+  catch(e){gm(e.code==='permission-denied'?'Sem permissão: as regras do Firestore ainda não foram coladas.':'Erro: '+e.code);return}
+  const go=()=>{$('gate').classList.add('hide');window.startApp(adapter)};
+  if(seeded)return go();
+  gm('');$('imp').classList.remove('hide');
+  $('impSkip').onclick=async()=>{await FS.setDoc(FS.doc(fs,'meta','seed'),{at:Date.now(),n:0});go()};
+  $('impBtn').onclick=async()=>{let o;try{o=JSON.parse($('impTxt').value)}catch(e){return gm('O texto colado não é válido. Copia-o outra vez, completo.')}
+    try{gm('A importar…');await importar(o);gm('');go()}catch(e){gm('Erro ao importar: '+e.code)}};
+});
+</script>
+</body>
+</html>
