@@ -30,7 +30,7 @@
 }
 *{box-sizing:border-box;margin:0}
 html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:80px}
-body{background:var(--ink);color:var(--ink);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--ink);color:var(--ink);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{max-width:100%;display:block}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
@@ -493,8 +493,23 @@ footer .resp{font:400 12px/1.5 var(--mono);letter-spacing:.08em;text-transform:u
 
 .collage .p2{aspect-ratio:716/832}.collage .p3{aspect-ratio:1}
 .collage .sticker{right:auto;left:2%;top:2%;bottom:auto}
+/* Porta de entrada cabe em qualquer ecrã (portátil baixo, telemóvel deitado) */
+.gate{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:max(20px,env(safe-area-inset-top)) 20px max(60px,env(safe-area-inset-bottom))}
+.gate>*{margin-block:auto}
+.stack{font-size:min(clamp(52px,9vw,120px),10.5vh)}
+.gate-pad{width:min(84px,10vh);margin-bottom:min(18px,2vh)}
+.gate p{margin:min(26px,3vh) 0 min(24px,2.6vh)}
+.gate small{margin-top:min(26px,3vh)}
+/* Telemóvel deitado / ecrãs baixos */
+@media (orientation:landscape) and (max-height:520px){
+  .hero{min-height:660px}
+  .hero .word{font-size:min(28vw,300px);top:40%;transform:translateY(-50%)}
+  .bottle{top:40%}
+  .bottle img{height:440px}
+  .saint{width:90px;top:96px;left:3%}
+  .seal{width:104px}
+}
 /* Sem scroll lateral em telemóveis (iOS ignora overflow no body) */
-html{overflow-x:hidden}
 main,section,footer{overflow-x:clip}
 @media(max-width:700px){
   .stamp{right:-6px;top:-40px;width:78px}
@@ -901,11 +916,11 @@ main,section,footer{overflow-x:clip}
   }
 })();
 </script>
-<div class="demo-bar" role="note">Proposta de redesign feita pela <b>WebDone</b> para a AMEN · <b>não é o site oficial</b></div>
+<div class="demo-bar" role="note"><span class="lg">Proposta de redesign feita pela <b>WebDone</b> para a AMEN · <b>não é o site oficial</b></span><span class="sm">Proposta <b>WebDone</b> · <b>não é o site oficial</b></span></div>
 <div class="demo-toast" id="demoToast" role="status">Isto é uma demonstração da WebDone. A loja real da AMEN não está ligada a esta página.</div>
 <style>
 .demo-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0E0D0B;color:#F2D21C;font:400 12px/1.4 "FugueMono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:10px 14px;border-top:2px solid #F2D21C}
-.demo-bar b{font-weight:700}
+.demo-bar b{font-weight:700}.demo-bar .sm{display:none}@media(max-width:600px){.demo-bar .lg{display:none}.demo-bar .sm{display:inline}.demo-bar{font-size:11px;padding:9px 10px calc(9px + env(safe-area-inset-bottom))}}
 body{padding-bottom:42px}.hero-foot{padding-bottom:78px!important}
 .demo-toast{position:fixed;left:50%;bottom:58px;z-index:10000;transform:translate(-50%,20px);opacity:0;pointer-events:none;max-width:min(92vw,460px);background:#F2D21C;color:#0E0D0B;border:2px solid #0E0D0B;box-shadow:6px 6px 0 #0E0D0B;padding:14px 18px;font:400 14px/1.45 "FugueMono",ui-monospace,monospace;transition:opacity .25s,transform .25s}
 .demo-toast.on{opacity:1;transform:translate(-50%,0)}
