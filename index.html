@@ -55,6 +55,11 @@ select[data-s=Feito],select[data-s=Postado],select[data-s=Vendido]{color:var(--o
 .gbtn{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
 #imp textarea{min-height:160px;font-size:12px;font-family:ui-monospace,monospace;margin-bottom:10px}
 #imp .gbtn{margin-bottom:8px}
+.proj h3{margin:12px 6px 2px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc)}
+.proj .row textarea.st{flex:1;min-height:0;height:auto;border:0;padding:10px 6px;resize:none;overflow:hidden;font-size:15px;line-height:1.35;background:transparent}
+.proj .row.done textarea.st{text-decoration:line-through;color:var(--mut)}
+.proj .row{align-items:flex-start}.proj .row input[type=checkbox]{margin-top:12px}.proj .who2{margin-top:12px}.proj .del{margin-top:5px}
+.proj .who2{flex:none;font-size:11px;color:var(--mut);background:var(--soft);border:1px solid var(--line);border-radius:99px;padding:2px 8px;margin-right:4px}
 .hide{display:none!important}
 </style>
 </head>
@@ -101,6 +106,7 @@ for(const k in SECS){
   s.innerHTML=`<h2>${SECS[k].title}<em id="c-${k}"></em></h2>${k==='hoje'?'<div class="bar"><i id="bar"></i></div>':''}<div class="list" id="l-${k}"><div class="empty">A carregar…</div></div>${k==='gastos'?'<div class="total"><span>Total</span><span id="tot">0 €</span></div>':''}${k==='vendas'?'<div class="total"><span>Vendido</span><span id="totV">0 €</span></div><div class="sub2" id="totNV"></div>':''}<button class="add" data-k="${k}">+ adicionar</button>`;
   app.appendChild(s);store[k]={};rows[k]={};
 }
+const ps=document.createElement('section');ps.className='wide proj';ps.id='s-amen';ps.innerHTML='<h2>Projeto AMEN · próximos passos<em id="c-amen"></em></h2><div class="bar"><i id="barA"></i></div><div id="l-amen"><div class="empty">A carregar…</div></div><button class="add" id="addA">+ adicionar passo</button>';app.appendChild(ps);
 const ns=document.createElement('section');ns.className='wide';ns.innerHTML='<h2>Notas</h2><textarea id="notas" placeholder="Escreve aqui…"></textarea>';app.appendChild(ns);
 
 function makeRow(k,id){
@@ -182,9 +188,58 @@ app.addEventListener('click',e=>{
 });
 document.addEventListener('focusout',()=>setTimeout(()=>{for(const k in SECS)paint(k)},60));
 
+
+/* Projeto AMEN: lista de passos guardada num só documento (meta/amen) */
+const AMEN_DEF=[
+ ['1 · Fechar o negócio','Enviar à AMEN a proposta com o link do site','Nós'],
+ ['1 · Fechar o negócio','Definir o preço e enviar orçamento por escrito','Nós'],
+ ['1 · Fechar o negócio','Receber 50% adiantado antes de começar','Nós'],
+ ['1 · Fechar o negócio','Propor manutenção mensal','Nós'],
+ ['1 · Fechar o negócio','Acordar: tema fica da AMEN depois de pago, nós podemos mostrá-lo no portefólio','Nós'],
+ ['2 · Pedir à AMEN','Acesso de colaborador à loja Shopify (criar conta Shopify Partner grátis)','AMEN'],
+ ['2 · Pedir à AMEN','Fotos originais em alta resolução (garrafa, campanhas, cocktails)','AMEN'],
+ ['2 · Pedir à AMEN','Confirmar textos, preços e pontos de venda','AMEN'],
+ ['2 · Pedir à AMEN','Perguntar se querem o merch no site','AMEN'],
+ ['3 · Construir','Converter o site num tema Shopify','Claude'],
+ ['3 · Construir','Ligar produtos, carrinho e pagamento reais da loja','Claude'],
+ ['3 · Construir','Inglês com o sistema de idiomas da Shopify','Claude'],
+ ['4 · Legal','Manter verificação de idade e "bebe com moderação"','Claude'],
+ ['4 · Legal','Aviso de cookies e política de privacidade (RGPD)','Claude'],
+ ['4 · Legal','AMEN confirma as regras de publicidade a álcool (e as piadas)','AMEN'],
+ ['5 · Testar','Instalar o tema como rascunho na loja','Nós'],
+ ['5 · Testar','Fazer uma compra de teste a sério','Nós'],
+ ['5 · Testar','Testar em iPhone, Android e computador','Nós'],
+ ['5 · Testar','AMEN aprova por escrito','AMEN'],
+ ['6 · Lançar','Publicar o tema (o domínio já está na Shopify)','Nós'],
+ ['6 · Lançar','Acompanhar a primeira semana e corrigir o que aparecer','Nós'],
+ ['6 · Lançar','Pedir testemunho e autorização para caso de estudo no Instagram','Nós']
+].map((x,i)=>({g:x[0],t:x[1],w:x[2],done:false,o:i}));
+let amen=null,amenRef=null,amenT=null;
+function amenSave(){if(readOnly||!amenRef)return;status('','a guardar…');clearTimeout(amenT);amenT=setTimeout(()=>queue('amen',()=>amenRef.set({items:amen})),350)}
+function amenPaint(){
+  const L=$('l-amen');if(!amen){return}
+  if(L.contains(document.activeElement))return;
+  L.innerHTML='';let g=null;
+  amen.forEach((it,i)=>{
+    if(it.g!==g){g=it.g;const h=document.createElement('h3');h.textContent=g||'Outros';L.appendChild(h)}
+    const r=document.createElement('div');r.className='row'+(it.done?' done':'');
+    const c=document.createElement('input');c.type='checkbox';c.checked=!!it.done;c.onchange=()=>{it.done=c.checked;r.classList.toggle('done',c.checked);amenKpi();amenSave()};
+    const x=document.createElement('textarea');x.className='st';x.rows=1;x.value=it.t||'';x.placeholder='passo';const fit=()=>{x.style.height='auto';x.style.height=x.scrollHeight+'px'};x.oninput=()=>{it.t=x.value;fit();amenSave()};requestAnimationFrame(fit);
+    const w=document.createElement('span');w.className='who2';w.textContent=it.w||'';if(!it.w)w.style.display='none';
+    const d=document.createElement('button');d.className='del';d.textContent='✕';d.setAttribute('aria-label','apagar');
+    d.onclick=()=>{if(!d.classList.contains('arm')){d.classList.add('arm');d.textContent='apagar?';setTimeout(()=>{d.classList.remove('arm');d.textContent='✕'},3000);return}amen.splice(i,1);amenPaint();amenSave()};
+    r.append(c,x,w,d);L.appendChild(r);
+  });
+  if(!amen.length)L.innerHTML='<div class="empty">Nada ainda.</div>';
+  amenKpi();
+}
+function amenKpi(){const n=amen.length,dn=amen.filter(x=>x.done).length;$('c-amen').textContent=n?dn+' de '+n:'';$('barA').style.width=(n?dn/n*100:0)+'%'}
+$('addA').onclick=()=>{if(!amen||readOnly)return;const last=amen[amen.length-1];amen.push({g:last?last.g:'Outros',t:'',w:'',done:false,o:Date.now()});amenPaint();const ins=$('l-amen').querySelectorAll('textarea.st');ins[ins.length-1].focus();amenSave()};
+document.addEventListener('focusout',()=>setTimeout(amenPaint,80));
+
 window.startApp=function(adapter){
   if(db)return;db=adapter;
-  let first=0;const need=Object.keys(SECS).length+1;
+  let first=0;const need=Object.keys(SECS).length+2;
   const to=setTimeout(()=>{if(first<need){status('err','sem resposta');msg('Não consegui ligar à base de dados. Verifica a internet.')}},10000);
   const ok=()=>{if(++first>=need){clearTimeout(to);msg('')}status('on','ao vivo')};
   for(const k in SECS){
@@ -194,6 +249,12 @@ window.startApp=function(adapter){
       store[k]=m;paint(k);ok();
     },e=>fail(e));
   }
+  amenRef=db.doc('meta/amen');
+  amenRef.onSnapshot(s=>{
+    if(!s.exists){amen=AMEN_DEF.map(x=>Object.assign({},x));amenPaint();if(!readOnly)queue('amen',()=>amenRef.set({items:amen}));ok();return}
+    if(amenT&&!s.metadata.hasPendingWrites){}
+    if(!s.metadata.hasPendingWrites){amen=(s.data().items||[]);amenPaint()}ok();
+  },e=>fail(e));
   const nd=db.doc('meta/notas'),ta=$('notas');let nt;
   nd.onSnapshot(s=>{const v=(s.exists&&s.data().txt)||'';if(document.activeElement!==ta&&!nt)ta.value=v;ok()},e=>fail(e));
   ta.addEventListener('input',()=>{if(readOnly)return;status('','a guardar…');clearTimeout(nt);nt=setTimeout(()=>{nt=null;queue('notas',()=>nd.set({txt:ta.value}))},600)});
